@@ -5,11 +5,11 @@
  * Provides a CLI wrapper around Firecrawl endpoints for skill integration.
  *
  * Usage:
- *   node firecrawl-api.js <scrape|crawl|map|batch-scrape|crawl-status> [<json-string>]
- *   cat payload.json | node firecrawl-api.js scrape
- *   node firecrawl-api.js scrape --file ./payload.json
- *   node firecrawl-api.js crawl --wait < payload.json
- *   node firecrawl-api.js crawl-status <crawl-id> [--wait]
+ *   node firecrawl-api.cjs <scrape|crawl|map|batch-scrape|crawl-status> [<json-string>]
+ *   cat payload.json | node firecrawl-api.cjs scrape
+ *   node firecrawl-api.cjs scrape --file ./payload.json
+ *   node firecrawl-api.cjs crawl --wait < payload.json
+ *   node firecrawl-api.cjs crawl-status <crawl-id> [--wait]
  */
 
 const https = require('https');
@@ -38,7 +38,7 @@ function loadApiKey() {
 }
 
 function usage() {
-  const cmd = path.basename(process.argv[1] || 'firecrawl-api.js');
+  const cmd = path.basename(process.argv[1] || 'firecrawl-api.cjs');
   console.error(
     [
       'Usage:',
@@ -264,7 +264,7 @@ const ENDPOINT_BY_COMMAND = {
 
   const apiKey = loadApiKey();
   if (!apiKey) {
-    console.error('Missing Firecrawl API key: set FIRECRAWL_API_KEY or create .env next to firecrawl-api.js');
+    console.error('Missing Firecrawl API key: set FIRECRAWL_API_KEY or create .env next to firecrawl-api.cjs');
     process.exit(1);
   }
 
